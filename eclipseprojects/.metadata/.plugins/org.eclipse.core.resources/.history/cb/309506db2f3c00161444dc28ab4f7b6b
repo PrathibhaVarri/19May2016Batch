@@ -1,0 +1,39 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestOperation {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+	
+	
+	
+	@Test
+	public void testAddition()
+	{
+		Example e=new Example();
+		
+		assertEquals(5,e.add(2, 3));
+				
+	}
+	
+	when number is less than zero then it should thorw exception
+	when number is positive and even it should return true
+	@Test
+	public void whenNumberIsPositiveAndEvenItShouldReturnTrue()
+	{
+		Example e=new Example();
+		assertTrue(e.isEven(6));
+	}
+	
+	@Test(expected=java.lang.IlLegalArgumentException.class)
+	public void whenNumberIsLessThanZeroItSholdReturnException()
+	{
+		Example e=new Example();
+		assertTrue(e.isEven(-6));
+	}
+
+}
