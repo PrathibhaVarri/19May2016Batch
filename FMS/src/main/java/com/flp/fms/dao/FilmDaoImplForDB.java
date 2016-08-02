@@ -1,5 +1,6 @@
 package com.flp.fms.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,11 +22,12 @@ public class FilmDaoImplForDB implements IFilmDao
 		this.em = emf.createEntityManager();
 	}
 
-	public void addFilm(Film film) 
+	public String addFilm(Film film) 
 	{
 		em.getTransaction().begin();
 		em.merge(film);
 		em.getTransaction().commit();
+		return null;
 	}
 
 	public String modifyFilm(Film film) {
@@ -90,6 +92,21 @@ public class FilmDaoImplForDB implements IFilmDao
 		}
 		return null;
 	}
+
+	@Override
+		public Film searchFilmByDetails(String title,Date release_year,double rating){
+			TypedQuery<Film> query = em.createQuery("Select f from Film f",Film.class);
+			
+			for(Film f:query.getResultList())
+			{
+				if(f.getTitle().equals(title) && f.getReleaseYear().equals(release_year) && f.getRating()==rating)
+				{
+					return f;
+				}
+			}
+			
+				return null;
+		} 
 
 	
 

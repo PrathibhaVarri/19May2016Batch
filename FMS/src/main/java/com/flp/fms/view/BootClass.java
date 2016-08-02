@@ -9,7 +9,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import com.flp.fms.dao.FilmDaoImplForDB;
+import com.flp.fms.Exceptions.DuplicateRecordException;
+import com.flp.fms.Exceptions.FieldEmptyException;
+import com.flp.fms.Exceptions.NegativeFieldException;
+import com.flp.fms.Exceptions.RecordNotFoundException;
 
 public class BootClass 
 {
@@ -18,7 +21,7 @@ public class BootClass
 
 	UserInteraction ui=new UserInteraction();
 	
-	public static void main(String args[]) throws ParseException
+	public static void main(String args[]) throws ParseException,FieldEmptyException,NegativeFieldException,RecordNotFoundException, DuplicateRecordException
 	{	
 		while(true)
 		{
@@ -31,7 +34,7 @@ public class BootClass
 		}
 	}
 	
-	private void menuSelection(int choice) throws ParseException
+	private void menuSelection(int choice) throws ParseException,FieldEmptyException,NegativeFieldException,RecordNotFoundException, DuplicateRecordException
 	{
 		switch(choice)
 		{
